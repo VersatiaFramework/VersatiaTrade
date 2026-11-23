@@ -1,0 +1,26 @@
+name: VersatiaTrade
+version: '${version}'
+main: dev.versatia.trade.TradePlugin
+api-version: '26.3'
+author: Versatia
+website: https://versatia.dev/
+description: A secure two-player trade window for items and money.
+# Kotlin and kotlinx.coroutines classes come from VersatiaCore's class loader; do not list kotlin-stdlib or kotlinx-coroutines here
+depend:
+  - VersatiaCore
+# Optional: VersatiaInteractions adds a trade button to its menu, Vault (VaultUnlocked) brings money
+# into trades, CommandAPI registers /trade
+softdepend:
+  - VersatiaInteractions
+  - Vault
+  - CommandAPI
+permissions:
+  versatia.trade.use:
+    description: Trades with other players; both players need it, and losing it during a trade ends the trade.
+    default: true
+  versatia.trade.money:
+    description: Offers money in a trade (needs Vault and an economy plugin).
+    default: true
+  versatia.trade.command.trade:
+    description: Sends and answers trade requests with /trade.
+    default: true

@@ -1,0 +1,40 @@
+# Extracted into the plugin's data folder on the first start; edit it there and run /versatia reload trade.
+trade:
+  # How long the exchange waits once both players accepted; any change to an offer stops it
+  countdown: 3s
+  # Blocks; a trade opens only this close, in the same world, and moving farther apart ends it
+  max-distance: 10
+# Who may trade is a matter of permissions: versatia.trade.use to trade at all, versatia.trade.money
+# to offer money. To keep creative items out of trades, deny versatia.trade.use in creative mode
+# (with LuckPerms: /lp group default permission set versatia.trade.use false gamemode=creative)
+money:
+  # The amounts of the money buttons, one to four; a left click adds, a right click takes back,
+  # Shift makes it ten times as much. Needs Vault (VaultUnlocked) and an economy plugin
+  steps: [1, 10, 100, 1000]
+request:
+  # Without VersatiaInteractions: how long a /trade request waits for an answer
+  timeout: 30s
+log:
+  # Every completed trade as one line in logs/trades-<date>.log
+  enabled: true
+window:
+  # The item model of each part of the trade window; a server with a resource pack points them at its own
+  icons:
+    divider: "minecraft:black_stained_glass_pane"
+    accept: "minecraft:lime_dye"
+    accepted: "minecraft:lime_concrete"
+    blocked: "minecraft:barrier"
+    status: "minecraft:paper"
+    countdown: "minecraft:clock"
+    money: "minecraft:gold_nugget"
+    partner-money: "minecraft:gold_ingot"
+    partner-accepted: "minecraft:lime_concrete"
+    partner-waiting: "minecraft:gray_concrete"
+# The sound of each moment, a sound key of the game or of the resource pack; '' plays nothing
+sounds:
+  request: "minecraft:block.note_block.pling"
+  changed: "minecraft:ui.button.click"
+  accepted: "minecraft:block.note_block.chime"
+  completed: "minecraft:entity.player.levelup"
+  refused: "minecraft:entity.villager.no"
+  cancelled: "minecraft:block.note_block.bass"

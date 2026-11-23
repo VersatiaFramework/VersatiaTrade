@@ -1,0 +1,103 @@
+# Arguments: {partner} the other player of a trade, {target} the other player of a request or a
+# check, {item} an item, {count} a number of items, {money} and {step} amounts as the economy writes
+# them, {seconds} the seconds left, {reason} a whole sentence.
+
+# The trade button of VersatiaInteractions' menu and its chat lines, when VersatiaInteractions is on
+# the server
+interaction:
+  name: "Trade"
+  busy: "<warning>{target} is trading"
+  busy-self: "<warning>You are trading"
+  # In place of VersatiaInteractions' offer.*, with its arguments: {target}, {sender}, {action.id}.
+  # The buttons run /interact, a command that needs the CommandAPI plugin
+  offer:
+    sent: "<neutral>Waiting for {target} to answer your trade offer."
+    received: "<neutral>{sender} offers you a trade. <click:run_command:'/interact accept {sender.name} {action.id}'>[Accept]</click> <click:run_command:'/interact decline {sender.name} {action.id}'>[Decline]</click>"
+    accepted: "<positive>{target} accepted your trade offer."
+    declined: "<negative>{target} declined your trade offer."
+    expired: "<warning>{target} did not answer your trade offer in time."
+    cancelled: "<warning>Your trade offer to {target} was cancelled."
+  button:
+    available:
+      lore:
+        - "<hint>Exchange items and money with {target}."
+        - "<hint>Click to send the offer."
+
+# Why a trade cannot start; also shown on the trade button
+deny:
+  self: "<negative>You cannot trade with yourself."
+  no-permission: "<negative>You cannot trade."
+  target-no-permission: "<negative>{target} cannot trade."
+  busy: "<warning>{target} is trading"
+  busy-self: "<warning>You are trading"
+  too-far: "<negative>{target} is too far away to trade."
+  # Another plugin stopped the trade without saying why
+  unavailable: "<negative>You cannot trade with {target} now."
+
+# /trade without VersatiaInteractions; the buttons run /trade, a command that needs the CommandAPI plugin
+request:
+  sent: "<neutral>Trade request sent to {target}."
+  received: "<neutral>{target} wants to trade with you. <click:run_command:'/trade accept {target.name}'>[Accept]</click> <click:run_command:'/trade decline {target.name}'>[Decline]</click>"
+  already-sent: "<warning>You asked {target} to trade already."
+  declined: "<negative>{target} declined your trade request."
+  expired: "<warning>{target} did not answer your trade request in time."
+  none: "<negative>{target} has no trade request waiting for your answer."
+  no-player: "<negative>There is no player {target} here."
+
+window:
+  title: "Trade with {partner}"
+  your-item:
+    lore:
+      - "<hint>Left click: take the stack back. Right click: take one back."
+  inventory-item:
+    lore:
+      - "<hint>Left click: offer the stack. Right click: offer one."
+  money:
+    name: "<neutral>Money: {step}"
+    lore:
+      - "<label>Your offer:</label> {money}"
+      - "<hint>Left click adds {step}, right click takes it back; with Shift ten times as much."
+  partner-money:
+    name: "<neutral>{partner} offers: {money}"
+  accept:
+    name: "<positive>Accept the trade"
+    lore:
+      - "<hint>The exchange starts once {partner} accepts too."
+  accepted:
+    name: "<positive>You accepted"
+    lore:
+      - "<hint>Click to take it back."
+  blocked:
+    name: "<negative>You cannot accept yet"
+    lore:
+      - "{reason}"
+  partner-accepted:
+    name: "<positive>{partner} accepted"
+  partner-waiting:
+    name: "<neutral>{partner} has not accepted yet"
+  status:
+    empty: "<neutral>Offer something, or wait for {partner}'s offer."
+    ready: "<positive>Both of you can accept."
+    countdown: "<positive>Exchange in {seconds} s."
+    no-room-self: "<negative>You need room for {count} more items."
+    no-room-partner: "<negative>{partner} needs room for {count} more items."
+    no-money-self: "<negative>You do not have the money you offer."
+    no-money-partner: "<negative>{partner} does not have the money they offer."
+    no-economy: "<negative>Money cannot be traded now."
+    short-self: "<negative>Your offer names items you no longer have."
+    short-partner: "<negative>{partner}'s offer names items they no longer have."
+
+trade:
+  completed: "<positive>Trade with {partner} completed."
+  shortfall: "<warning>Your offer changed: {count} of {item} are no longer in your inventory."
+  refused: "<negative>The exchange did not happen. {reason}"
+  economy-failed: "<negative>The economy refused a payment; nothing was exchanged."
+  # Another plugin keeps the item out of trades without saying why
+  item-denied: "<negative>{item} cannot be traded."
+  ended:
+    closed: "<warning>{partner} closed the trade."
+    quit: "<warning>{partner} left the server; the trade ended."
+    death: "<warning>{partner} died; the trade ended."
+    distance: "<warning>You moved too far apart; the trade ended."
+    permission: "<negative>The trade ended: one of you may no longer trade."
+    stopped: "<warning>The trade ended: the trade plugin stopped."
