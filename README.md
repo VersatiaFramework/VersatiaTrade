@@ -28,7 +28,7 @@ creative mode (LuckPerms: `/lp group default permission set versatia.trade.use f
 
 ## Requirements
 
-- VersatiaCore.
+- Required: VersatiaCore.
 - Optional: [VersatiaInteractions](https://github.com/VersatiaFramework/VersatiaInteractions), for a
   trade button in its menu (Shift + right click on a player) with the waiting animation; without it
   `/trade <player>` sends a request answered from the chat.
