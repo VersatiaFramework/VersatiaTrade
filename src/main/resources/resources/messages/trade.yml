@@ -1,6 +1,7 @@
 # Arguments: {partner} the other player of a trade, {target} the other player of a request or a
 # check, {item} an item, {count} a number of items, {money} and {step} amounts as the economy writes
 # them, {seconds} the seconds left, {reason} a whole sentence.
+# <accept> is a style of this plugin; plugins/VersatiaCore/styles.yml says how it looks.
 
 # The trade button of VersatiaInteractions' menu and its chat lines, when VersatiaInteractions is on
 # the server
@@ -9,14 +10,18 @@ interaction:
   busy: "<warning>{target} is trading"
   busy-self: "<warning>You are trading"
   # In place of VersatiaInteractions' offer.*, with its arguments: {target}, {sender}, {action.id}.
-  # The buttons run /interact, a command that needs the CommandAPI plugin
+  # The button runs /interact, a command that needs the CommandAPI plugin
   offer:
     sent: "<neutral>Waiting for {target} to answer your trade offer."
-    received: "<neutral>{sender} offers you a trade. <click:run_command:'/interact accept {sender.name} {action.id}'>[Accept]</click> <click:run_command:'/interact decline {sender.name} {action.id}'>[Decline]</click>"
+    received: "<neutral>{sender} offers you a trade.      <click:run_command:'/interact accept {sender.name} {action.id}'><hover:show_text:'Accept the trade'><accept>[Click to accept]</accept></hover></click>"
     accepted: "<positive>{target} accepted your trade offer."
     declined: "<negative>{target} declined your trade offer."
     expired: "<warning>{target} did not answer your trade offer in time."
     cancelled: "<warning>Your trade offer to {target} was cancelled."
+  # In place of VersatiaInteractions' dialog.title and dialog.body, for receiver.notify: dialog or both
+  dialog:
+    title: "<heading>Trade offer"
+    body: "<neutral>{sender} offers you a trade."
   button:
     available:
       lore:
@@ -34,10 +39,10 @@ deny:
   # Another plugin stopped the trade without saying why
   unavailable: "<negative>You cannot trade with {target} now."
 
-# /trade without VersatiaInteractions; the buttons run /trade, a command that needs the CommandAPI plugin
+# /trade without VersatiaInteractions; the button runs /trade, a command that needs the CommandAPI plugin
 request:
   sent: "<neutral>Trade request sent to {target}."
-  received: "<neutral>{target} wants to trade with you. <click:run_command:'/trade accept {target.name}'>[Accept]</click> <click:run_command:'/trade decline {target.name}'>[Decline]</click>"
+  received: "<neutral>{target} wants to trade with you.      <click:run_command:'/trade accept {target.name}'><hover:show_text:'Accept the trade'><accept>[Click to accept]</accept></hover></click>"
   already-sent: "<warning>You asked {target} to trade already."
   declined: "<negative>{target} declined your trade request."
   expired: "<warning>{target} did not answer your trade request in time."

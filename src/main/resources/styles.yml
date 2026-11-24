@@ -1,0 +1,5 @@
+# The defaults for the styles of this plugin's own. The file stays in the JAR: when the plugin starts,
+# VersatiaCore adds what the server lacks to plugins/VersatiaCore/styles.yml, the one file an admin
+# edits, and what that file already defines wins
+# The button that accepts a request or an offer in chat, upright inside the italic of clickable
+accept: "<green><!italic>"

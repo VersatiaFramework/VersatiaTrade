@@ -13,7 +13,7 @@ money:
   steps: [1, 10, 100, 1000]
 request:
   # Without VersatiaInteractions: how long a /trade request waits for an answer
-  timeout: 30s
+  timeout: 15s
 log:
   # Every completed trade as one line in logs/trades-<date>.log
   enabled: true
